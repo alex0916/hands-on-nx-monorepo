@@ -7,6 +7,7 @@
 		"start:all": "nx run-many --target=serve --projects=posts-app,gql-nexus-service",
 		"build": "nx build",
 		"test": "nx test",
+		"test:all": "nx run-many --target=test --projects=ui-components",
 		"codegen": "graphql-codegen --config codegen.ts"
 	},
 	"private": true,

@@ -6,20 +6,23 @@ export const Posts = () => {
 
 	if (loading) {
 		return (
-			<div className='flex justify-center items-center w-screen h-screen'>
+			<div className="flex justify-center items-center">
 				<Spinner size={SpinnerSize.Large} />
 			</div>
 		);
 	}
 
 	return (
-		<div className="flex flex-row flex-wrap justify-between">
-			{data.posts.map((post) => (
-				<Card key={post.id} className="m-4 flex flex-col justify-between" header={post.title}>
-					<div>{post.body}</div>
-					<Button className="mt-6">See comments</Button>
-				</Card>
-			))}
+		<div>
+			<p className="font-bold antialiased text-3xl pb-6">Posts</p>
+			<div className="grid grid-cols-3 gap-4">
+				{data.posts.map((post) => (
+					<Card key={post.id} className="flex flex-col justify-between" header={post.title}>
+						<div>{post.body}</div>
+						<Button className="mt-6">See comments</Button>
+					</Card>
+				))}
+			</div>
 		</div>
 	);
 };

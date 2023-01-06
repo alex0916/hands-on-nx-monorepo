@@ -19,7 +19,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = ({
 	size = ButtonSize.Medium,
-	colorClass = 'bg-teal-400',
+	colorClass = 'bg-teal-600',
 	className,
 	children,
 	...props

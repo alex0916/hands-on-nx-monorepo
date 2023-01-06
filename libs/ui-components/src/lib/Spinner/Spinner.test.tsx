@@ -16,7 +16,7 @@ const subject = () => render(<Spinner {...props} />);
 describe('Button', () => {
 	it('Should display the spinner', async () => {
 		subject();
-		const spinner = await screen.findByTestId(props.testId);
+		const spinner = await screen.findByTestId(String(props.testId));
         expect(spinner).toHaveClass(spinnerSizeClasses[SpinnerSize.Small], 'border-teal-400');
 	});
 
@@ -24,7 +24,7 @@ describe('Button', () => {
 		props.size = SpinnerSize.Large;
 		props.borderColorClass = 'border-blue-300';
 		subject();
-        const spinner = await screen.findByTestId(props.testId);
+        const spinner = await screen.findByTestId(String(props.testId));
 		expect(spinner).toHaveClass(props.borderColorClass, spinnerSizeClasses[props.size]);
 	});
 });

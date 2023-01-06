@@ -1,5 +1,9 @@
-import { Posts } from '../components/posts';
+import { Page, Posts } from '../components';
 
 export default function PostsPage() {
-	return <Posts />;
+	return (
+		<Page>
+			<Posts />
+		</Page>
+	);
 }

@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Card> = ({ children, ...args }) => (
 				industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
 				scrambled it to make a type specimen book.
 			</>
-			<Button size={ButtonSize.Medium} className="mt-6 w-32">
+			<Button className="mt-6 w-32">
 				Action
 			</Button>
 		</div>

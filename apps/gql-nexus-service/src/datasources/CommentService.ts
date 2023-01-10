@@ -1,21 +1,21 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
+import { NexusGenObjects } from '../generated/nexus-typegen';
 
-export type Comment = {
-	id: string;
-	postId: string;
-	name: string;
-	email: string;
-	body: string;
-};
+type Comment = NexusGenObjects['Comment'];
 
 export class CommentService extends RESTDataSource {
 	override baseURL = 'https://jsonplaceholder.typicode.com';
 
-	async getComments(): Promise<Comment[]> {
+	getComments(): Promise<Comment[]> {
 		return this.get('/comments');
 	}
 
-	async getCommentsByPostId(postId: string): Promise<Comment[]> {
-		return this.get('/comments', { params: { postId } });
+	getCommentsByPostId(postId: string): Promise<Comment[]> {
+		return this.get(`/comments?postId=${postId}`);
+	}
+
+	getCommentsByPostIds(postIds: string[]): Promise<Comment[]> {
+		const params = postIds.map((id) => `postId=${id}`).join('&');
+		return this.get(`/comments?${params}`);
 	}
 }

@@ -1,12 +1,14 @@
 import { render, screen } from '@testing-library/react';
 
-import { Button, ButtonProps, ButtonSize, buttonSizeClasses } from './Button';
+import { Button, ButtonProps, buttonSizeClasses, buttonVariantClasses } from './Button';
 
 let props: ButtonProps;
 
 beforeEach(() => {
 	props = {
-		size: ButtonSize.Medium,
+		size: 'medium',
+		color: 'teal',
+		variant: 'contained',
 	};
 });
 
@@ -16,14 +18,15 @@ describe('Button', () => {
 	it('Should display the button', async () => {
 		subject();
 		const button = await screen.findByText('Title');
-		expect(button).toHaveClass('bg-teal-400', buttonSizeClasses[ButtonSize.Medium]);
+		expect(button).toHaveClass(buttonVariantClasses['contained']['teal'], buttonSizeClasses['medium']);
 	});
 
 	it('should change the button props', async () => {
-		props.size = ButtonSize.Large;
-		props.colorClass = 'bg-blue-300';
+		props.size = 'large';
+		props.variant = 'outlined';
+		props.color = 'slate';
 		subject();
 		const button = await screen.findByText('Title');
-		expect(button).toHaveClass(props.colorClass, buttonSizeClasses[props.size])
+		expect(button).toHaveClass(buttonVariantClasses['outlined']['slate'], buttonSizeClasses['large']);
 	});
 });

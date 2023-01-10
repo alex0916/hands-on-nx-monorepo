@@ -1,0 +1,23 @@
+query getUsers($first: Int, $after: String) {
+	users(first: $first, after: $after) {
+		edges {
+			cursor
+			node {
+				id
+				avatar
+				email
+				name
+				stats {
+					totalComments
+					totalPosts
+				}
+			}
+		}
+		pageInfo {
+			hasNextPage
+			hasPreviousPage
+			startCursor
+			endCursor
+		}
+	}
+}

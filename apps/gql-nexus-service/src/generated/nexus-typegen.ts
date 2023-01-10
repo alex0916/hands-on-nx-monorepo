@@ -5,8 +5,21 @@
 
 
 import type { Context } from "./../context"
+import type { core, connectionPluginCore } from "nexus"
 
-
+declare global {
+  interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * Adds a Relay-style connection to the type, with numerous options for configuration
+     *
+     * @see https://nexusjs.org/docs/plugins/connection
+     */
+    connectionField<FieldName extends string>(
+      fieldName: FieldName,
+      config: connectionPluginCore.ConnectionFieldConfig<TypeName, FieldName>
+    ): void
+  }
+}
 
 
 declare global {
@@ -38,32 +51,81 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Address: { // root type
+    city?: string | null; // String
+    street?: string | null; // String
+    suite?: string | null; // String
+    zipcode?: string | null; // String
+  }
   Comment: { // root type
     body?: string | null; // String
     email?: string | null; // String
     id: string; // ID!
     name?: string | null; // String
   }
+  CommentConnection: { // root type
+    edges?: Array<NexusGenRootTypes['CommentEdge'] | null> | null; // [CommentEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  CommentEdge: { // root type
+    cursor: string; // String!
+    node?: NexusGenRootTypes['Comment'] | null; // Comment
+  }
   CommentPayload: { // root type
     comment: NexusGenRootTypes['Comment']; // Comment!
   }
-  Mutation: {};
+  Company: { // root type
+    bs?: string | null; // String
+    catchPhrase?: string | null; // String
+    name?: string | null; // String
+  }
+  PageInfo: { // root type
+    endCursor?: string | null; // String
+    hasNextPage: boolean; // Boolean!
+    hasPreviousPage: boolean; // Boolean!
+    startCursor?: string | null; // String
+  }
   Post: { // root type
     body?: string | null; // String
     id: string; // ID!
     title?: string | null; // String
+  }
+  PostConnection: { // root type
+    edges?: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PostEdge: { // root type
+    cursor: string; // String!
+    node?: NexusGenRootTypes['Post'] | null; // Post
   }
   PostPayload: { // root type
     post: NexusGenRootTypes['Post']; // Post!
   }
   Query: {};
   User: { // root type
+    address?: NexusGenRootTypes['Address'] | null; // Address
+    company?: NexusGenRootTypes['Company'] | null; // Company
     email?: string | null; // String
     id: string; // ID!
     name?: string | null; // String
     phone?: string | null; // String
     username?: string | null; // String
     website?: string | null; // String
+  }
+  UserConnection: { // root type
+    edges?: Array<NexusGenRootTypes['UserEdge'] | null> | null; // [UserEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  UserEdge: { // root type
+    cursor: string; // String!
+    node?: NexusGenRootTypes['User'] | null; // User
+  }
+  UserPayload: { // root type
+    user: NexusGenRootTypes['User']; // User!
+  }
+  UserStats: { // root type
+    totalComments?: number | null; // Int
+    totalPosts?: number | null; // Int
   }
 }
 
@@ -78,81 +140,222 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Address: { // field return type
+    city: string | null; // String
+    street: string | null; // String
+    suite: string | null; // String
+    zipcode: string | null; // String
+  }
   Comment: { // field return type
     body: string | null; // String
     email: string | null; // String
     id: string; // ID!
     name: string | null; // String
   }
+  CommentConnection: { // field return type
+    edges: Array<NexusGenRootTypes['CommentEdge'] | null> | null; // [CommentEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  CommentEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Comment'] | null; // Comment
+  }
   CommentPayload: { // field return type
     comment: NexusGenRootTypes['Comment']; // Comment!
   }
-  Mutation: { // field return type
-    createPost: NexusGenRootTypes['PostPayload']; // PostPayload!
+  Company: { // field return type
+    bs: string | null; // String
+    catchPhrase: string | null; // String
+    name: string | null; // String
+  }
+  PageInfo: { // field return type
+    endCursor: string | null; // String
+    hasNextPage: boolean; // Boolean!
+    hasPreviousPage: boolean; // Boolean!
+    startCursor: string | null; // String
   }
   Post: { // field return type
     body: string | null; // String
-    comments: Array<NexusGenRootTypes['Comment'] | null>; // [Comment]!
+    comments: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     id: string; // ID!
     title: string | null; // String
+  }
+  PostConnection: { // field return type
+    edges: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PostEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Post'] | null; // Post
   }
   PostPayload: { // field return type
     post: NexusGenRootTypes['Post']; // Post!
   }
   Query: { // field return type
-    comments: Array<NexusGenRootTypes['Comment'] | null>; // [Comment]!
-    posts: Array<NexusGenRootTypes['Post'] | null>; // [Post]!
+    comments: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
+    commentsByPostId: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
+    posts: NexusGenRootTypes['PostConnection'] | null; // PostConnection
+    postsByUserId: NexusGenRootTypes['PostConnection'] | null; // PostConnection
+    users: NexusGenRootTypes['UserConnection'] | null; // UserConnection
   }
   User: { // field return type
+    address: NexusGenRootTypes['Address'] | null; // Address
+    avatar: string | null; // String
+    company: NexusGenRootTypes['Company'] | null; // Company
     email: string | null; // String
     id: string; // ID!
     name: string | null; // String
     phone: string | null; // String
+    stats: NexusGenRootTypes['UserStats'] | null; // UserStats
     username: string | null; // String
     website: string | null; // String
+  }
+  UserConnection: { // field return type
+    edges: Array<NexusGenRootTypes['UserEdge'] | null> | null; // [UserEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  UserEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['User'] | null; // User
+  }
+  UserPayload: { // field return type
+    user: NexusGenRootTypes['User']; // User!
+  }
+  UserStats: { // field return type
+    totalComments: number | null; // Int
+    totalPosts: number | null; // Int
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Address: { // field return type name
+    city: 'String'
+    street: 'String'
+    suite: 'String'
+    zipcode: 'String'
+  }
   Comment: { // field return type name
     body: 'String'
     email: 'String'
     id: 'ID'
     name: 'String'
   }
+  CommentConnection: { // field return type name
+    edges: 'CommentEdge'
+    pageInfo: 'PageInfo'
+  }
+  CommentEdge: { // field return type name
+    cursor: 'String'
+    node: 'Comment'
+  }
   CommentPayload: { // field return type name
     comment: 'Comment'
   }
-  Mutation: { // field return type name
-    createPost: 'PostPayload'
+  Company: { // field return type name
+    bs: 'String'
+    catchPhrase: 'String'
+    name: 'String'
+  }
+  PageInfo: { // field return type name
+    endCursor: 'String'
+    hasNextPage: 'Boolean'
+    hasPreviousPage: 'Boolean'
+    startCursor: 'String'
   }
   Post: { // field return type name
     body: 'String'
-    comments: 'Comment'
+    comments: 'CommentConnection'
     id: 'ID'
     title: 'String'
+  }
+  PostConnection: { // field return type name
+    edges: 'PostEdge'
+    pageInfo: 'PageInfo'
+  }
+  PostEdge: { // field return type name
+    cursor: 'String'
+    node: 'Post'
   }
   PostPayload: { // field return type name
     post: 'Post'
   }
   Query: { // field return type name
-    comments: 'Comment'
-    posts: 'Post'
+    comments: 'CommentConnection'
+    commentsByPostId: 'CommentConnection'
+    posts: 'PostConnection'
+    postsByUserId: 'PostConnection'
+    users: 'UserConnection'
   }
   User: { // field return type name
+    address: 'Address'
+    avatar: 'String'
+    company: 'Company'
     email: 'String'
     id: 'ID'
     name: 'String'
     phone: 'String'
+    stats: 'UserStats'
     username: 'String'
     website: 'String'
+  }
+  UserConnection: { // field return type name
+    edges: 'UserEdge'
+    pageInfo: 'PageInfo'
+  }
+  UserEdge: { // field return type name
+    cursor: 'String'
+    node: 'User'
+  }
+  UserPayload: { // field return type name
+    user: 'User'
+  }
+  UserStats: { // field return type name
+    totalComments: 'Int'
+    totalPosts: 'Int'
   }
 }
 
 export interface NexusGenArgTypes {
-  Mutation: {
-    createPost: { // args
-      input: NexusGenInputs['PostInput']; // PostInput!
+  Post: {
+    comments: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+  }
+  Query: {
+    comments: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+    commentsByPostId: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      postId: string; // String!
+    }
+    posts: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+    postsByUserId: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      userId: string; // String!
+    }
+    users: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
     }
   }
 }
@@ -220,6 +423,7 @@ declare global {
   interface NexusGenPluginInputTypeConfig<TypeName extends string> {
   }
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
+    
   }
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
   }

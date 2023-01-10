@@ -1,24 +1,26 @@
-export enum SpinnerSize {
-	Small = 'Small',
-	Medium = 'Medium',
-	Large = 'Large',
-}
+export type SpinnerSize = 'small' | 'medium' | 'large';
+export type SpinnerColor = 'teal' | 'slate';
 
-export const spinnerSizeClasses = {
-	[SpinnerSize.Small]: 'h-8 w-8',
-	[SpinnerSize.Medium]: 'h-12 w-12',
-	[SpinnerSize.Large]: 'h-16 w-16',
+export const spinnerSizeClasses: Record<SpinnerSize, string> = {
+	small: 'h-8 w-8',
+	medium: 'h-12 w-12',
+	large: 'h-16 w-16',
+};
+
+export const spinnerColorClasses: Record<SpinnerColor, string> = {
+	teal: 'border-teal-600',
+	slate: 'border-slate-600',
 };
 
 export interface SpinnerProps {
 	size?: SpinnerSize;
-	borderColorClass?: string;
+	color?: SpinnerColor;
 	testId?: string;
 }
 
-export const Spinner = ({ size = SpinnerSize.Small, borderColorClass = 'border-teal-400', testId }: SpinnerProps) => (
+export const Spinner = ({ size = 'small', color = 'teal', testId }: SpinnerProps) => (
 	<div
 		data-testid={testId}
-		className={`border-t-gray-300 border-solid animate-spin rounded-full ${borderColorClass} border-4 ${spinnerSizeClasses[size]}`}
+		className={`border-t-gray-300 border-solid animate-spin rounded-full border-4 ${spinnerColorClasses[color]} ${spinnerSizeClasses[size]}`}
 	></div>
 );

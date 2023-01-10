@@ -1,4 +1,4 @@
-import { makeSchema } from 'nexus';
+import { makeSchema, connectionPlugin } from 'nexus';
 import { join } from 'path';
 import * as types from './graphql';
 
@@ -12,4 +12,7 @@ export const schema = makeSchema({
 		module: join(process.cwd(), 'apps/gql-nexus-service/src/context.ts'),
 		export: 'Context',
 	},
+	plugins: [
+		connectionPlugin(),
+	],
 });

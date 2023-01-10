@@ -1,4 +1,5 @@
 import { inputObjectType, objectType } from 'nexus';
+import { ConnectionResponse } from '../../lib/ConnectionResponse';
 import { Comment } from './Comment';
 
 export const Post = objectType({
@@ -7,9 +8,12 @@ export const Post = objectType({
 		t.nonNull.id('id');
 		t.string('title');
 		t.string('body');
-		t.nonNull.list.field('comments', {
+		t.connectionField('comments', {
 			type: Comment,
-			resolve: ({ id }, _args, { dataSources }) => dataSources.commentService.getCommentsByPostId(id),
+			resolve: async ({ id }, args, { dataSources }) => {
+				const posts = await dataSources.commentService.getCommentsByPostId(id);
+				return ConnectionResponse.fromResolver(args, posts).getResponse();
+			},
 		});
 	},
 });

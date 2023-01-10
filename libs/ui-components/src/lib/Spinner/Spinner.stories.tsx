@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Spinner, SpinnerSize } from './Spinner';
+import { Spinner } from './Spinner';
 
 export default {
 	title: 'Spinner',
@@ -11,5 +11,6 @@ const Template: ComponentStory<typeof Spinner> = ({ ...args }) => <Spinner {...a
 
 export const Default = Template.bind({});
 Default.args = {
-	size: SpinnerSize.Small,
+	size: 'medium',
+	color: 'teal',
 };

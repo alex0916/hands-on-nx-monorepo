@@ -1,8 +1,9 @@
-import { CommentService, PostService } from './datasources';
+import { CommentService, PostService, UserService } from './datasources';
 
 export interface DataSources {
 	commentService: CommentService;
 	postService: PostService;
+	userService: UserService;
 }
 
 export interface Context {
@@ -13,6 +14,7 @@ export interface Context {
 const initializeDataSources = (): DataSources => ({
 	commentService: new CommentService(),
 	postService: new PostService(),
+	userService: new UserService(),
 });
 
 export const context: Context = {

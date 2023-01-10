@@ -1,12 +1,26 @@
-import { extendType } from 'nexus';
+import { extendType, stringArg, nonNull } from 'nexus';
+import { ConnectionResponse } from '../../lib/ConnectionResponse';
 import { Post } from '../types';
 
-export const PostQuery = extendType({
+export const PostQueries = extendType({
 	type: 'Query',
 	definition(t) {
-		t.nonNull.list.field('posts', {
+		t.connectionField('posts', {
 			type: Post,
-			resolve: (_root, _args, { dataSources }) => dataSources.postService.getPosts(),
+			resolve: async (_, args, { dataSources }) => {
+				const posts = await dataSources.postService.getPosts();
+				return ConnectionResponse.fromResolver(args, posts).getResponse();
+			},
+		});
+		t.connectionField('postsByUserId', {
+			type: Post,
+			additionalArgs: {
+				userId: nonNull(stringArg({ description: 'User ID to filter the results' })),
+			},
+			resolve: async (_, { userId, ...args }, { dataSources }) => {
+				const posts = await dataSources.postService.getPostsByUserId(userId);
+				return ConnectionResponse.fromResolver(args, posts).getResponse();
+			},
 		});
 	},
 });

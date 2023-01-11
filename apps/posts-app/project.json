@@ -1,7 +1,7 @@
 {
   "name": "posts-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/posts-app",
+  "sourceRoot": "apps/posts-app/src",
   "projectType": "application",
   "targets": {
     "build": {

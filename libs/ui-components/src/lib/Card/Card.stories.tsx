@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button, ButtonSize } from '../Button/Button';
+import { Button } from '../Button/Button';
 
 import { Card } from './Card';
 

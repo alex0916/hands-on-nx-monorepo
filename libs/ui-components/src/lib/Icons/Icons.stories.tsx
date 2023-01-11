@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { WelcomeIcon, PostsIcon } from './';
+import { WelcomeIcon, PostsIcon } from '.';
 
 const IconsWrapper = () => {
 	return (

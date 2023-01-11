@@ -3,7 +3,7 @@ import { ReactElement, useState } from 'react';
 interface NavbarProps {
 	logo: ReactElement;
 	options: ReactElement[];
-    className?: string;
+	className?: string;
 }
 
 export function Navbar({ logo, options, className }: NavbarProps) {
@@ -11,8 +11,8 @@ export function Navbar({ logo, options, className }: NavbarProps) {
 
 	return (
 		<nav className={`w-full ${className}`}>
-			<div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
-				<div>
+			<div className="grid grid-cols-12">
+				<div className="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 					<div className="flex items-center justify-between py-3 md:py-5 md:block">
 						{logo}
 						<div className="md:hidden">
@@ -53,13 +53,9 @@ export function Navbar({ logo, options, className }: NavbarProps) {
 						</div>
 					</div>
 				</div>
-				<div>
-					<div
-						className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-							navbar ? 'block' : 'hidden'
-						}`}
-					>
-						<ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+				<div className="col-start-2 col-end-12 md:col-start-9 md:col-end-11 my-auto">
+					<div className={`flex md:block ${navbar ? 'block' : 'hidden'} pb-3 md:pb-0`}>
+						<ul className="justify-end space-y-8 md:flex md:space-x-6 md:space-y-0">
 							{options.map((option, idx) => (
 								<li key={idx}>{option}</li>
 							))}

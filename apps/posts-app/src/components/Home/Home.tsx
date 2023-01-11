@@ -1,4 +1,4 @@
-import { Button, ButtonSize, WelcomeIcon } from '@nx-monorepo/ui-components';
+import { Button, WelcomeIcon } from '@nx-monorepo/ui-components';
 import Link from 'next/link';
 
 export const Home = () => {

@@ -12,6 +12,18 @@ export const schema = makeSchema({
 		module: join(process.cwd(), 'apps/gql-nexus-service/src/context.ts'),
 		export: 'Context',
 	},
+	sourceTypes: {
+		modules: [
+		  // Automatically finds any interface/type/class named similarly to the and infers it
+		  // the "source" type of that resolver.
+		  {
+			module: join(process.cwd(), 'apps/gql-nexus-service/src/models.ts'),
+			alias: 'models',
+			typeMatch: name => new RegExp(`(?:interface|type|class)\\s+(${name}Model?)\\W`, 'g'),
+		  },
+		],
+		debug: false,
+	  },
 	plugins: [
 		connectionPlugin(),
 	],

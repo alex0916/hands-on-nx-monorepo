@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-
+import type * as models from "./../models"
 import type { Context } from "./../context"
 import type { core, connectionPluginCore } from "nexus"
 
@@ -51,18 +51,8 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  Address: { // root type
-    city?: string | null; // String
-    street?: string | null; // String
-    suite?: string | null; // String
-    zipcode?: string | null; // String
-  }
-  Comment: { // root type
-    body?: string | null; // String
-    email?: string | null; // String
-    id: string; // ID!
-    name?: string | null; // String
-  }
+  Address: models.AddressModel;
+  Comment: models.CommentModel;
   CommentConnection: { // root type
     edges?: Array<NexusGenRootTypes['CommentEdge'] | null> | null; // [CommentEdge]
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
@@ -74,22 +64,14 @@ export interface NexusGenObjects {
   CommentPayload: { // root type
     comment: NexusGenRootTypes['Comment']; // Comment!
   }
-  Company: { // root type
-    bs?: string | null; // String
-    catchPhrase?: string | null; // String
-    name?: string | null; // String
-  }
+  Company: models.CompanyModel;
   PageInfo: { // root type
     endCursor?: string | null; // String
     hasNextPage: boolean; // Boolean!
     hasPreviousPage: boolean; // Boolean!
     startCursor?: string | null; // String
   }
-  Post: { // root type
-    body?: string | null; // String
-    id: string; // ID!
-    title?: string | null; // String
-  }
+  Post: models.PostModel;
   PostConnection: { // root type
     edges?: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
@@ -102,16 +84,7 @@ export interface NexusGenObjects {
     post: NexusGenRootTypes['Post']; // Post!
   }
   Query: {};
-  User: { // root type
-    address?: NexusGenRootTypes['Address'] | null; // Address
-    company?: NexusGenRootTypes['Company'] | null; // Company
-    email?: string | null; // String
-    id: string; // ID!
-    name?: string | null; // String
-    phone?: string | null; // String
-    username?: string | null; // String
-    website?: string | null; // String
-  }
+  User: models.UserModel;
   UserConnection: { // root type
     edges?: Array<NexusGenRootTypes['UserEdge'] | null> | null; // [UserEdge]
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
@@ -176,9 +149,10 @@ export interface NexusGenFieldTypes {
   }
   Post: { // field return type
     body: string | null; // String
-    comments: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     id: string; // ID!
     title: string | null; // String
+    totalComments: number | null; // Int
+    user: NexusGenRootTypes['User'] | null; // User
   }
   PostConnection: { // field return type
     edges: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
@@ -196,6 +170,7 @@ export interface NexusGenFieldTypes {
     commentsByPostId: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     posts: NexusGenRootTypes['PostConnection'] | null; // PostConnection
     postsByUserId: NexusGenRootTypes['PostConnection'] | null; // PostConnection
+    userById: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['UserConnection'] | null; // UserConnection
   }
   User: { // field return type
@@ -264,9 +239,10 @@ export interface NexusGenFieldTypeNames {
   }
   Post: { // field return type name
     body: 'String'
-    comments: 'CommentConnection'
     id: 'ID'
     title: 'String'
+    totalComments: 'Int'
+    user: 'User'
   }
   PostConnection: { // field return type name
     edges: 'PostEdge'
@@ -284,6 +260,7 @@ export interface NexusGenFieldTypeNames {
     commentsByPostId: 'CommentConnection'
     posts: 'PostConnection'
     postsByUserId: 'PostConnection'
+    userById: 'User'
     users: 'UserConnection'
   }
   User: { // field return type name
@@ -316,14 +293,6 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
-  Post: {
-    comments: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-    }
-  }
   Query: {
     comments: { // args
       after?: string | null; // String
@@ -350,6 +319,9 @@ export interface NexusGenArgTypes {
       first?: number | null; // Int
       last?: number | null; // Int
       userId: string; // String!
+    }
+    userById: { // args
+      id?: string | null; // String
     }
     users: { // args
       after?: string | null; // String

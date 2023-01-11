@@ -1,6 +1,7 @@
-import { Button, Card, Spinner, SpinnerSize } from '@nx-monorepo/ui-components';
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
+
+import { Button, Card, Spinner } from '@nx-monorepo/ui-components';
 import { PageInfo, useGetUsersQuery, User, UserEdge } from '../../generated/graphql';
 
 const CardDetails = ({ label, value }: { label: string; value: number }) => (
@@ -19,8 +20,8 @@ const UserCard = ({ id, avatar, name, stats: { totalComments, totalPosts } }: Us
 					src={avatar}
 					alt="avatar"
 				/>
-				<p className="pt-2 font-bold text-lg text-center">{name}</p>
-				<div className="pt-2 flex flex-row space-x-4 text-center">
+				<p className="font-bold text-lg text-center pt-2">{name}</p>
+				<div className="flex flex-row space-x-4 text-center pt-2">
 					<CardDetails label="Posts" value={totalPosts} />
 					<CardDetails label="Comments" value={totalComments} />
 				</div>
@@ -51,7 +52,7 @@ export const Users = () => {
 		<>
 			<p className="font-bold antialiased text-3xl mb-6">Users</p>
 			{users.length > 0 && (
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 					{users.map(({ node }) => (
 						<UserCard key={node.id} {...node} />
 					))}
@@ -63,7 +64,7 @@ export const Users = () => {
 				</div>
 			)}
 			{pageInfo.hasNextPage && (
-				<div className="mt-8 flex justify-center items-center">
+				<div className="flex justify-center items-center mt-8">
 					<Button variant="outlined" onClick={loadMoreUsers}>
 						Load more
 					</Button>

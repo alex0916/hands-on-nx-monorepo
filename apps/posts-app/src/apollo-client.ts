@@ -1,17 +1,16 @@
 /**
  * Reference from https://github.com/nikitowsky/next-advanced-apollo-starter
- * TODO update
  */
 
 import { useMemo } from 'react';
 import merge from 'deepmerge';
 import cookie from 'cookie';
+import isEqual from 'lodash.isequal';
 import type { GetServerSidePropsContext } from 'next';
 import type { IncomingMessage } from 'http';
 import type { NormalizedCacheObject } from '@apollo/client';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import isEqual from 'lodash.isequal';
 
 interface PageProps {
 	props?: Record<string, any>;

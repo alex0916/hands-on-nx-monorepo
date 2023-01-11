@@ -19,9 +19,6 @@ const Logo = () => (
 export const Page = ({ children }: PageProps) => {
 	return (
 		<div className="min-h-screen bg-cover bg-no-repeat bg-fixed bg-[url('../public/assets/images/blob-scene-haikei.svg')] overflow-y-auto">
-			{/**
-			 * @TODO update navbar props
-			 */}
 			<Navbar
 				className="shadow mb-10"
 				logo={<Logo />}

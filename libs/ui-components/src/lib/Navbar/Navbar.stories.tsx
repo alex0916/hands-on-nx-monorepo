@@ -13,5 +13,5 @@ export const Default = Template.bind({});
 Default.args = {
 	options: [<div>Post</div>, <>Comments</>],
 	logo: <div className="text-xl font-bold">Logo</div>,
-    className: 'bg-teal-400 text-white shadow'
+    className: 'bg-teal-600 text-white shadow'
 };

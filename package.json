@@ -4,11 +4,12 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "nx serve",
-		"start:all": "npx nx run-many --target=serve --all=true",
+		"start:monorepo": "nx storybook ui-components",
+		"start:all": "nx run-many --target=serve --all=true",
 		"build": "nx build",
 		"test": "nx test",
 		"test:all": "nx run-many --target=test --all=true",
-		"codegen": "graphql-codegen --config codegen.ts"
+		"generate": "graphql-codegen --config codegen.ts"
 	},
 	"private": true,
 	"devDependencies": {

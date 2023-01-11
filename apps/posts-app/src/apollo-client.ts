@@ -30,7 +30,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
 const createApolloClient = (ctx?: GetServerSidePropsContext) => {
 	const httpLink = new HttpLink({
-		uri: 'http://localhost:4000',
+		uri: process.env.API_URL,
 		credentials: 'same-origin',
 	});
 

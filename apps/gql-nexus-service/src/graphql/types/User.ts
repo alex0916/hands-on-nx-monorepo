@@ -1,4 +1,6 @@
 import { objectType } from 'nexus';
+import { ConnectionResponse } from '../../lib/ConnectionResponse';
+import { Post } from './Post';
 
 export const Company = objectType({
 	name: 'Company',
@@ -51,6 +53,13 @@ export const User = objectType({
 					totalPosts: posts.length,
 					totalComments: comments.length,
 				};
+			},
+		});
+		t.connectionField('posts', {
+			type: Post,
+			resolve: async ({ id }, args, { dataSources }) => {
+				const posts = await dataSources.postService.getPostsByUserId(id);
+				return ConnectionResponse.fromResolver(args, posts).getResponse();
 			},
 		});
 	},

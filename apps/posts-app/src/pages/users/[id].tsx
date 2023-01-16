@@ -1,9 +1,9 @@
-import { Page, Home } from '../../components';
+import { Page, User } from '../../components';
 
 export default function UserPage() {
 	return (
 		<Page>
-			<Home />
+			<User />
 		</Page>
 	);
 }

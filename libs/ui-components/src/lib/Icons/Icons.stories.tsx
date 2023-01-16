@@ -1,10 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { WelcomeIcon, PostsIcon } from '.';
+import { WelcomeIcon, PostsIcon, LocationIcon, EmailIcon, CompanyIcon } from '.';
 
 const IconsWrapper = () => {
 	return (
-		<div className="flex">
+		<div className="flex flex-wrap">
+			<LocationIcon />
+			<EmailIcon />
+			<CompanyIcon />
 			<WelcomeIcon />
 			<PostsIcon />
 		</div>

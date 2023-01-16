@@ -41,6 +41,7 @@ export const Button = ({
 		<button
 			{...props}
 			className={`inline-block rounded shadow-md text-white font-medium text-lg tracking-wide ${className} ${buttonVariantClasses[variant][color]} ${buttonSizeClasses[size]}`}
+			role="button"
 		>
 			{children}
 		</button>

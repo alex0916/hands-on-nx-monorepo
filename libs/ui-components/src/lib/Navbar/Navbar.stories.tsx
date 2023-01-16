@@ -7,11 +7,11 @@ export default {
 	component: Navbar,
 } as ComponentMeta<typeof Navbar>;
 
-const Template: ComponentStory<typeof Navbar> = ({ ...args }) => <Navbar {...args} />;
+const Template: ComponentStory<typeof Navbar> = ({ ...args }) => (
+	<Navbar {...args} options={[<div>Post</div>, <>Comments</>]} logo={<div className="text-xl font-bold">Logo</div>} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
-	options: [<div>Post</div>, <>Comments</>],
-	logo: <div className="text-xl font-bold">Logo</div>,
-    className: 'bg-teal-600 text-white shadow'
+	className: 'bg-teal-600 text-white shadow',
 };

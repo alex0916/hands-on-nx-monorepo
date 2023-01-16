@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { WelcomeIcon, PostsIcon, LocationIcon, EmailIcon, CompanyIcon } from '.';
+import { WelcomeIcon, PostsIcon, LocationIcon, EmailIcon, CompanyIcon, CloseIcon, MenuIcon } from '.';
 
 const IconsWrapper = () => {
 	return (
@@ -8,6 +8,8 @@ const IconsWrapper = () => {
 			<LocationIcon />
 			<EmailIcon />
 			<CompanyIcon />
+			<CloseIcon />
+			<MenuIcon />
 			<WelcomeIcon />
 			<PostsIcon />
 		</div>

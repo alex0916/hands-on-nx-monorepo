@@ -8,6 +8,7 @@ interface PostModalProps {
 	hideModal: () => void;
 }
 
+// Not the best approach I know, just to test the modal :)
 export const PostModal = ({ post, isDisplayed, hideModal }: PostModalProps) => {
 	const { id, user, title, body, totalComments } = post ?? {};
 

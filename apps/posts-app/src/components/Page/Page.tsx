@@ -23,10 +23,10 @@ export const Page = ({ children }: PageProps) => {
 				className="shadow mb-10"
 				logo={<Logo />}
 				options={[
-					<Link href={'users'} className="text-white">
+					<Link href={'/users'} className="text-white">
 						Users
 					</Link>,
-					<Link href={'posts'} className="text-white">
+					<Link href={'/posts'} className="text-white">
 						Posts
 					</Link>,
 				]}

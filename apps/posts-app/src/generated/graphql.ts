@@ -119,7 +119,6 @@ export type Query = {
   comments?: Maybe<CommentConnection>;
   commentsByPostId?: Maybe<CommentConnection>;
   posts?: Maybe<PostConnection>;
-  postsByUserId?: Maybe<PostConnection>;
   userById?: Maybe<User>;
   users?: Maybe<UserConnection>;
 };
@@ -150,15 +149,6 @@ export type QueryPostsArgs = {
 };
 
 
-export type QueryPostsByUserIdArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  userId: Scalars['String'];
-};
-
-
 export type QueryUserByIdArgs = {
   id?: InputMaybe<Scalars['String']>;
 };
@@ -180,9 +170,18 @@ export type User = {
   id: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
+  posts?: Maybe<PostConnection>;
   stats?: Maybe<UserStats>;
   username?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
+};
+
+
+export type UserPostsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 export type UserConnection = {
@@ -212,6 +211,15 @@ export type UserStats = {
   totalPosts?: Maybe<Scalars['Int']>;
 };
 
+export type GetCommentsByPostIdQueryVariables = Exact<{
+  postId: Scalars['String'];
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetCommentsByPostIdQuery = { __typename?: 'Query', commentsByPostId?: { __typename?: 'CommentConnection', edges?: Array<{ __typename?: 'CommentEdge', cursor: string, node?: { __typename?: 'Comment', id: string, name?: string | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+
 export type GetPostsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   after?: InputMaybe<Scalars['String']>;
@@ -219,6 +227,15 @@ export type GetPostsQueryVariables = Exact<{
 
 
 export type GetPostsQuery = { __typename?: 'Query', posts?: { __typename?: 'PostConnection', edges?: Array<{ __typename?: 'PostEdge', cursor: string, node?: { __typename?: 'Post', id: string, title?: string | null, body?: string | null, totalComments?: number | null, user?: { __typename?: 'User', id: string, name?: string | null, email?: string | null, avatar?: string | null } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
+
+export type GetUserByIdQueryVariables = Exact<{
+  userId?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetUserByIdQuery = { __typename?: 'Query', userById?: { __typename?: 'User', id: string, name?: string | null, username?: string | null, email?: string | null, avatar?: string | null, address?: { __typename?: 'Address', city?: string | null } | null, company?: { __typename?: 'Company', name?: string | null } | null, posts?: { __typename?: 'PostConnection', edges?: Array<{ __typename?: 'PostEdge', cursor: string, node?: { __typename?: 'Post', id: string, title?: string | null, body?: string | null, totalComments?: number | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null } | null };
 
 export type GetUsersQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
@@ -229,6 +246,55 @@ export type GetUsersQueryVariables = Exact<{
 export type GetUsersQuery = { __typename?: 'Query', users?: { __typename?: 'UserConnection', edges?: Array<{ __typename?: 'UserEdge', cursor: string, node?: { __typename?: 'User', id: string, avatar?: string | null, email?: string | null, name?: string | null, stats?: { __typename?: 'UserStats', totalComments?: number | null, totalPosts?: number | null } | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null } } | null };
 
 
+export const GetCommentsByPostIdDocument = gql`
+    query getCommentsByPostId($postId: String!, $first: Int, $after: String) {
+  commentsByPostId(postId: $postId, first: $first, after: $after) {
+    edges {
+      cursor
+      node {
+        id
+        name
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCommentsByPostIdQuery__
+ *
+ * To run a query within a React component, call `useGetCommentsByPostIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCommentsByPostIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCommentsByPostIdQuery({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useGetCommentsByPostIdQuery(baseOptions: Apollo.QueryHookOptions<GetCommentsByPostIdQuery, GetCommentsByPostIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCommentsByPostIdQuery, GetCommentsByPostIdQueryVariables>(GetCommentsByPostIdDocument, options);
+      }
+export function useGetCommentsByPostIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCommentsByPostIdQuery, GetCommentsByPostIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCommentsByPostIdQuery, GetCommentsByPostIdQueryVariables>(GetCommentsByPostIdDocument, options);
+        }
+export type GetCommentsByPostIdQueryHookResult = ReturnType<typeof useGetCommentsByPostIdQuery>;
+export type GetCommentsByPostIdLazyQueryHookResult = ReturnType<typeof useGetCommentsByPostIdLazyQuery>;
+export type GetCommentsByPostIdQueryResult = Apollo.QueryResult<GetCommentsByPostIdQuery, GetCommentsByPostIdQueryVariables>;
 export const GetPostsDocument = gql`
     query getPosts($first: Int, $after: String) {
   posts(first: $first, after: $after) {
@@ -285,6 +351,70 @@ export function useGetPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
 export type GetPostsQueryHookResult = ReturnType<typeof useGetPostsQuery>;
 export type GetPostsLazyQueryHookResult = ReturnType<typeof useGetPostsLazyQuery>;
 export type GetPostsQueryResult = Apollo.QueryResult<GetPostsQuery, GetPostsQueryVariables>;
+export const GetUserByIdDocument = gql`
+    query getUserById($userId: String, $first: Int, $after: String) {
+  userById(id: $userId) {
+    id
+    name
+    username
+    email
+    address {
+      city
+    }
+    company {
+      name
+    }
+    avatar
+    posts(first: $first, after: $after) {
+      edges {
+        cursor
+        node {
+          id
+          title
+          body
+          totalComments
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetUserByIdQuery__
+ *
+ * To run a query within a React component, call `useGetUserByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserByIdQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useGetUserByIdQuery(baseOptions?: Apollo.QueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
+      }
+export function useGetUserByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
+        }
+export type GetUserByIdQueryHookResult = ReturnType<typeof useGetUserByIdQuery>;
+export type GetUserByIdLazyQueryHookResult = ReturnType<typeof useGetUserByIdLazyQuery>;
+export type GetUserByIdQueryResult = Apollo.QueryResult<GetUserByIdQuery, GetUserByIdQueryVariables>;
 export const GetUsersDocument = gql`
     query getUsers($first: Int, $after: String) {
   users(first: $first, after: $after) {

@@ -169,7 +169,6 @@ export interface NexusGenFieldTypes {
     comments: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     commentsByPostId: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     posts: NexusGenRootTypes['PostConnection'] | null; // PostConnection
-    postsByUserId: NexusGenRootTypes['PostConnection'] | null; // PostConnection
     userById: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['UserConnection'] | null; // UserConnection
   }
@@ -181,6 +180,7 @@ export interface NexusGenFieldTypes {
     id: string; // ID!
     name: string | null; // String
     phone: string | null; // String
+    posts: NexusGenRootTypes['PostConnection'] | null; // PostConnection
     stats: NexusGenRootTypes['UserStats'] | null; // UserStats
     username: string | null; // String
     website: string | null; // String
@@ -259,7 +259,6 @@ export interface NexusGenFieldTypeNames {
     comments: 'CommentConnection'
     commentsByPostId: 'CommentConnection'
     posts: 'PostConnection'
-    postsByUserId: 'PostConnection'
     userById: 'User'
     users: 'UserConnection'
   }
@@ -271,6 +270,7 @@ export interface NexusGenFieldTypeNames {
     id: 'ID'
     name: 'String'
     phone: 'String'
+    posts: 'PostConnection'
     stats: 'UserStats'
     username: 'String'
     website: 'String'
@@ -313,17 +313,18 @@ export interface NexusGenArgTypes {
       first?: number | null; // Int
       last?: number | null; // Int
     }
-    postsByUserId: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      userId: string; // String!
-    }
     userById: { // args
       id?: string | null; // String
     }
     users: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+  }
+  User: {
+    posts: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int

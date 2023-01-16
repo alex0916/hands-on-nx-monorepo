@@ -17,7 +17,7 @@ const subject = () => render(<Button {...props}>Title</Button>);
 describe('Button', () => {
 	it('Should display the button', async () => {
 		subject();
-		const button = await screen.findByText('Title');
+		const button = await screen.findByRole('button', { name: 'Title' });
 		expect(button).toHaveClass(buttonVariantClasses['contained']['teal'], buttonSizeClasses['medium']);
 	});
 
@@ -26,7 +26,7 @@ describe('Button', () => {
 		props.variant = 'outlined';
 		props.color = 'slate';
 		subject();
-		const button = await screen.findByText('Title');
+		const button = await screen.findByRole('button', { name: 'Title' });
 		expect(button).toHaveClass(buttonVariantClasses['outlined']['slate'], buttonSizeClasses['large']);
 	});
 });

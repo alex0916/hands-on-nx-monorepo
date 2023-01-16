@@ -10,6 +10,7 @@ import type { GetServerSidePropsContext } from 'next';
 import type { IncomingMessage } from 'http';
 import type { NormalizedCacheObject } from '@apollo/client';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { relayStylePagination } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
 
 interface PageProps {
@@ -48,7 +49,21 @@ const createApolloClient = (ctx?: GetServerSidePropsContext) => {
 	return new ApolloClient({
 		ssrMode: typeof window === 'undefined',
 		link: authLink.concat(httpLink),
-		cache: new InMemoryCache(),
+		cache: new InMemoryCache({
+			typePolicies: {
+				Query: {
+					fields: {
+						posts: relayStylePagination(),
+						users: relayStylePagination(),
+					},
+				},
+				User: {
+					fields: {
+						posts: relayStylePagination(),
+					},
+				},
+			},
+		}),
 	});
 };
 

@@ -1,0 +1,17 @@
+query getCommentsByPostId($postId: String!, $first: Int, $after: String) {
+  commentsByPostId(postId: $postId, first: $first, after: $after) {
+    edges {
+      cursor
+      node {
+        id
+        name
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

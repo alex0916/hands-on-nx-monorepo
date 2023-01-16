@@ -1,4 +1,4 @@
-import { Page, Posts } from '../components';
+import { Page, Posts } from '../../components';
 
 export default function PostsPage() {
 	return (

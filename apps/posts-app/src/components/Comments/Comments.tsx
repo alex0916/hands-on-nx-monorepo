@@ -20,9 +20,9 @@ export const Comments = ({ postId }: CommentsProps) => {
 	return (
 		<>
 			{comments.length > 0 && (
-				<div className="grid grid-cols-1 gap-4">
+				<div className="grid grid-cols-1 gap-4 text-gray-600 dark:text-white">
 					{comments.map(({ node }) => (
-						<p className='px-5 py-2 border border-transparent bg-slate-800 rounded-full'>{node.name}</p>
+						<p className='px-5 py-2 border border-transparent bg-gray-300 dark:bg-slate-800 rounded-full'>{node.name}</p>
 					))}
 				</div>
 			)}

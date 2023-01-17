@@ -11,7 +11,7 @@ const CardDetails = ({ label, value }: { label: string; value: number }) => (
 
 export const UsersCard = ({ id, avatar, name, stats: { totalComments, totalPosts } }: User) => (
 	<Link href={`users/${id}`}>
-		<Card className="bg-slate-900">
+		<Card className="bg-gray-200 dark:bg-slate-900 text-gray-600 dark:text-white">
 			<div className="flex flex-wrap flex-col items-center">
 				<img
 					className="w-16 h-16 p-1 rounded-full ring-2 ring-slate-300 dark:ring-slate-500"

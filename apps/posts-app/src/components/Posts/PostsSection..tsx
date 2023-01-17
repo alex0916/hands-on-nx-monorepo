@@ -29,10 +29,10 @@ export const PostsSection = ({
 
 	return (
 		<>
-			<p className="font-bold antialiased text-3xl mb-6">Posts</p>
+			<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">Posts</p>
 			<PostModal isDisplayed={isDisplayed} hideModal={hideModal} post={selectedPost} />
 			{posts.length > 0 && (
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-gray-600 dark:text-white">
 					{posts.map(({ node }) => (
 						<PostCard key={node.id} onPostClick={() => handlePostClick(node)} user={user} {...node} />
 					))}

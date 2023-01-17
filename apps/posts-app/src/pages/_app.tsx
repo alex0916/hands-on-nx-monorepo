@@ -1,6 +1,7 @@
 import { ApolloProvider } from '@apollo/client';
 import { AppProps } from 'next/app';
 import { useApollo } from '../apollo-client';
+import { ThemeContextProvider } from '../contexts';
 import './styles.css';
 
 function PostsApp({ Component, pageProps }: AppProps) {
@@ -8,7 +9,9 @@ function PostsApp({ Component, pageProps }: AppProps) {
 
 	return (
 		<ApolloProvider client={apolloClient}>
-			<Component {...pageProps} />
+			<ThemeContextProvider>
+				<Component {...pageProps} />
+			</ThemeContextProvider>
 		</ApolloProvider>
 	);
 }

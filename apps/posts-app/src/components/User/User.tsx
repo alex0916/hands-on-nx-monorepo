@@ -27,9 +27,9 @@ export const User = () => {
 
 	return (
 		<>
-			<div className="flex flex-col md:flex-row flex-wrap space-x-0 md:space-x-8 md:items-center md:justify-center pb-8 md:pb-2">
+			<div className="flex flex-col md:flex-row flex-wrap space-x-0 md:space-x-8 md:items-center md:justify-center pb-8 md:pb-2 text-gray-600 dark:text-white">
 				<img
-					className="w-64 h-64 p-1 rounded-full ring-2 ring-slate-500 bg-gray-800 m-auto md:m-0"
+					className="w-64 h-64 p-1 rounded-full ring-2 ring-slate-300 bg-gray-200 dark:bg-gray-800 m-auto md:m-0"
 					src={user.avatar}
 					alt="avatar"
 				/>

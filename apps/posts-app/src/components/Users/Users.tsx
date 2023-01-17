@@ -19,7 +19,7 @@ export const Users = () => {
 
 	return (
 		<>
-			<p className="font-bold antialiased text-3xl mb-6">Users</p>
+			<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">Users</p>
 			{users.length > 0 && (
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 					{users.map(({ node }) => (

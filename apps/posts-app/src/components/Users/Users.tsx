@@ -1,9 +1,10 @@
 import { Button, Spinner } from '@nx-monorepo/ui-components';
 import { useGetUsersQuery } from '../../generated/graphql';
 import { UsersCard } from './UsersCard';
+import { Error } from '..';
 
 export const Users = () => {
-	const { loading, data, fetchMore } = useGetUsersQuery({
+	const { loading, data, error, fetchMore } = useGetUsersQuery({
 		variables: { first: 6 },
 		notifyOnNetworkStatusChange: true,
 	});
@@ -19,7 +20,8 @@ export const Users = () => {
 
 	return (
 		<>
-			<p className="font-bold antialiased text-3xl mb-6">Users</p>
+			<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">Users</p>
+			{error ? <Error message={error.message} /> : null}
 			{users.length > 0 && (
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 					{users.map(({ node }) => (

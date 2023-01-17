@@ -17,7 +17,7 @@ export const Modal = ({ isDisplayed, hideModal, header, footer, children, classN
 				{...props}
 			>
 				<div
-					className={`relative w-auto my-6 mx-auto max-w-3xl bg-slate-900 ${className}`}
+					className={`relative w-auto my-6 mx-auto max-w-3xl rounded-lg bg-white ${className}`}
 					onClick={(event) => {
 						event.stopPropagation();
 					}}

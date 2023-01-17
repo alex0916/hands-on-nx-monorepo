@@ -34,7 +34,7 @@ export const User = objectType({
 	definition(t) {
 		t.nonNull.id('id');
 		t.string('name');
-		t.string('username');
+		t.field('username', { type: 'String', resolve: ({ username }) => `@${username}` });
 		t.string('email');
 		t.string('phone');
 		t.string('website');

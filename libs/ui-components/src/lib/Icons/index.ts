@@ -6,3 +6,4 @@ export * from './CloseIcon';
 export * from './MenuIcon';
 export * from './DarkModeIcon';
 export * from './LightModeIcon';
+export * from './ErrorIcon';

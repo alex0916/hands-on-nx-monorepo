@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import Link from 'next/link';
 
 import { Navbar } from '@nx-monorepo/ui-components';
 import { Theme } from '..';
 
-interface PageProps {
-	children: ReactNode;
+export interface PageProps extends PropsWithChildren {
+	header?: string;
 }
 
 const Logo = () => (
@@ -17,7 +17,7 @@ const Logo = () => (
 	</Link>
 );
 
-export const Page = ({ children }: PageProps) => (
+export const Page = ({ children, header }: PageProps) => (
 	<div className="min-h-screen bg-cover bg-no-repeat bg-fixed bg-[url('../../public/assets/images/blob.svg')] dark:bg-[url('../../public/assets/images/dark-blob.svg')] overflow-y-auto">
 		<Navbar
 			className="shadow mb-10"
@@ -33,6 +33,9 @@ export const Page = ({ children }: PageProps) => (
 			]}
 		/>
 		<div className="grid grid-cols-12 text-white mb-8">
+			{header ? (
+				<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">{header}</p>
+			) : null}
 			<div className="col-start-2 col-end-12 md:col-start-3 md:col-end-11">{children}</div>
 		</div>
 	</div>

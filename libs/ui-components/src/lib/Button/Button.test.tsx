@@ -2,17 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Button, ButtonProps, buttonSizeClasses, buttonVariantClasses } from './Button';
 
-let props: ButtonProps;
-
-beforeEach(() => {
-	props = {
-		size: 'medium',
-		color: 'teal',
-		variant: 'contained',
-	};
-});
-
-const subject = () => render(<Button {...props}>Title</Button>);
+const subject = (props?: ButtonProps) => render(<Button {...props}>Title</Button>);
 
 describe('Button', () => {
 	it('Should display the button', async () => {
@@ -22,10 +12,7 @@ describe('Button', () => {
 	});
 
 	it('should change the button props', async () => {
-		props.size = 'large';
-		props.variant = 'outlined';
-		props.color = 'slate';
-		subject();
+		subject({ color: 'slate', size: 'large', variant: 'outlined' });
 		const button = await screen.findByRole('button', { name: 'Title' });
 		expect(button).toHaveClass(buttonVariantClasses['outlined']['slate'], buttonSizeClasses['large']);
 	});

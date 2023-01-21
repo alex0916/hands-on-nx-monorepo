@@ -4,10 +4,14 @@ import { Error } from '..';
 
 interface CommentsProps {
 	postId: string;
+	pageSize: number;
 }
 
-export const Comments = ({ postId }: CommentsProps) => {
-	const { loading, data, error, fetchMore } = useGetCommentsByPostIdQuery({ variables: { postId, first: 5 } });
+export const Comments = ({ postId, pageSize }: CommentsProps) => {
+	const { loading, data, error, fetchMore } = useGetCommentsByPostIdQuery({
+		variables: { postId, first: pageSize },
+		notifyOnNetworkStatusChange: true,
+	});
 
 	const { edges: comments, pageInfo } = data?.commentsByPostId ?? {
 		edges: [],
@@ -15,24 +19,27 @@ export const Comments = ({ postId }: CommentsProps) => {
 	};
 
 	const fetchMoreComments = () => {
-		fetchMore({ variables: { postId, first: 5, after: pageInfo.endCursor } });
+		fetchMore({ variables: { postId, first: pageSize, after: pageInfo.endCursor } });
 	};
 
 	return (
 		<>
 			{error ? <Error message={error.message} /> : null}
 			{comments.length > 0 && (
-				<div className="grid grid-cols-1 gap-4 text-gray-600 dark:text-white">
+				<ul data-testid="comments" className="grid grid-cols-1 gap-4 text-gray-600 dark:text-white">
 					{comments.map(({ node }) => (
-						<p className="px-5 py-2 border border-transparent bg-gray-300 dark:bg-slate-800 rounded-full">
+						<li
+							key={node.id}
+							className="px-5 py-2 border border-transparent bg-gray-300 dark:bg-slate-800 rounded-full"
+						>
 							{node.name}
-						</p>
+						</li>
 					))}
-				</div>
+				</ul>
 			)}
 			{loading && (
 				<div className="flex justify-center items-center my-4">
-					<Spinner size="medium" />
+					<Spinner dataTestId="comments-spinner" size="medium" />
 				</div>
 			)}
 			{pageInfo.hasNextPage && (

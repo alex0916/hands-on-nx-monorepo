@@ -4,33 +4,31 @@ import { useGetUserByIdQuery } from '../../generated/graphql';
 import { PostsSection } from '../Posts/PostsSection.';
 import { Error } from '..';
 
-export const User = () => {
-	const { query } = useRouter();
-
+export const User = ({ userId, postsPageSize }: { userId: string; postsPageSize: number }) => {
 	const { loading, data, error, fetchMore } = useGetUserByIdQuery({
-		variables: { userId: String(query.id), first: 3 },
+		variables: { userId, first: postsPageSize },
 		notifyOnNetworkStatusChange: true,
 	});
 
 	const { userById: user } = data ?? {};
 
 	const fetchMorePosts = () => {
-		fetchMore({ variables: { userId: user.id, first: 3, after: user.posts.pageInfo.endCursor } });
+		fetchMore({ variables: { userId: user.id, first: postsPageSize, after: user.posts.pageInfo.endCursor } });
 	};
 
 	if (loading && !user) {
 		return (
 			<div className="flex justify-center items-center my-4">
-				<Spinner size="medium" />
+				<Spinner dataTestId="user-spinner" size="medium" />
 			</div>
 		);
 	}
 
 	return (
 		<>
-			{error ? <Error message={error.name} /> : null}
+			{error ? <Error message={error.message} /> : null}
 			{user ? (
-				<div className="flex flex-col md:flex-row flex-wrap space-x-0 md:space-x-8 md:items-center md:justify-center pb-8 md:pb-2 text-gray-600 dark:text-white">
+				<div className="flex flex-col md:flex-row flex-wrap space-x-0 md:space-x-8 md:items-center md:justify-center pb-8 text-gray-600 dark:text-white">
 					<img
 						className="w-64 h-64 p-1 rounded-full ring-2 ring-slate-300 bg-gray-200 dark:bg-gray-800 m-auto md:m-0"
 						src={user.avatar}

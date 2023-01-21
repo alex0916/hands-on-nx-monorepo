@@ -5,5 +5,5 @@ export * from './Users';
 export * from './Post';
 export * from './Posts';
 export * from './Comments';
-export * from './Theme';
+export * from './Page';
 export * from './Error';

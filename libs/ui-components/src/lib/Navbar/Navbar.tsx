@@ -18,7 +18,7 @@ export function Navbar({ logo, options, className }: NavbarProps) {
 						{logo}
 						<div className="md:hidden">
 							<button
-								className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+								className="p-2 rounded-md outline-none text-gray-700 focus:border-gray-400 dark:text-white focus:border"
 								onClick={() => setNavbar(!navbar)}
 							>
 								{navbar ? <CloseIcon /> : <MenuIcon />}
@@ -27,8 +27,8 @@ export function Navbar({ logo, options, className }: NavbarProps) {
 					</div>
 				</div>
 				<div className="col-start-2 col-end-12 md:col-start-9 md:col-end-11 my-auto">
-					<div className={`flex md:block ${navbar ? 'block' : 'hidden'} pb-3 md:pb-0`}>
-						<ul className="justify-end space-y-8 md:flex md:space-x-6 md:space-y-0">
+					<div role="navigation" className={`flex md:block ${navbar ? 'block' : 'hidden'} pb-3 md:pb-0`}>
+						<ul className="justify-end space-y-8 md:flex md:items-center md:space-x-6 md:space-y-0">
 							{options.map((option, idx) => (
 								<li key={idx}>{option}</li>
 							))}

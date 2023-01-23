@@ -1,5 +1,5 @@
 import { extendType, nonNull, stringArg } from 'nexus';
-import { ConnectionResponse } from '../../lib/ConnectionResponse';
+import { ConnectionResponse } from '../lib/ConnectionResponse';
 import { Comment } from '../types';
 
 export const CommentsQueries = extendType({

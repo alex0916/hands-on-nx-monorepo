@@ -10,7 +10,7 @@ export interface Context {
 	dataSources: DataSources;
 }
 
-// @TODO Add server cache to the dataSources
+// @TODO Add cache to the dataSources
 const initializeDataSources = (): DataSources => ({
 	commentService: new CommentService(),
 	postService: new PostService(),

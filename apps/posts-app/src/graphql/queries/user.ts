@@ -1,5 +1,5 @@
 import { extendType, stringArg } from 'nexus';
-import { ConnectionResponse } from '../../lib/ConnectionResponse';
+import { ConnectionResponse } from '../lib/ConnectionResponse';
 import { User } from '../types';
 
 export const UserQueries = extendType({

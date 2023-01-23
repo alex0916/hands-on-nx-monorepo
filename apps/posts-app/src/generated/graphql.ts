@@ -116,19 +116,10 @@ export type PostPayload = {
 
 export type Query = {
   __typename?: 'Query';
-  comments?: Maybe<CommentConnection>;
   commentsByPostId?: Maybe<CommentConnection>;
   posts?: Maybe<PostConnection>;
   userById?: Maybe<User>;
   users?: Maybe<UserConnection>;
-};
-
-
-export type QueryCommentsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
 };
 
 

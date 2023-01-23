@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
-import { fireEvent, GqlMock, render, screen } from '@posts-app/test-utils';
-import { usersFixture } from '@posts-app/fixtures';
+import { fireEvent, GqlMock, render, screen } from 'apps/posts-app/src/test/test-utils';
+import { usersFixture } from 'apps/posts-app/src/test/fixtures';
 import { GetUsersDocument } from 'apps/posts-app/src/generated/graphql';
 import { Users } from '../Users';
 
@@ -54,7 +54,7 @@ describe('Users', () => {
 		expect(screen.queryByTestId('users-spinner')).not.toBeInTheDocument();
 		expect(screen.queryByRole('button', { name: 'Load more' })).not.toBeInTheDocument();
 	});
-	
+
 	it('should load the users', async () => {
 		subject();
 		await screen.findByTestId('users-spinner');

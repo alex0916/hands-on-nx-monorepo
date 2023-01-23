@@ -1,5 +1,5 @@
 import { objectType } from 'nexus';
-import { ConnectionResponse } from '../../lib/ConnectionResponse';
+import { ConnectionResponse } from '../lib/ConnectionResponse';
 import { Post } from './Post';
 
 export const Company = objectType({

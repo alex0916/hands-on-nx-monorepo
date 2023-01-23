@@ -1,4 +1,4 @@
-import assert = require('assert');
+import assert from 'node:assert';
 import { DocumentNode, TypedQueryDocumentNode } from 'graphql';
 import { ApolloServer, BaseContext, GraphQLRequest } from '@apollo/server';
 import { VariableValues, ExecuteOperationOptions } from '@apollo/server/dist/esm/externalTypes/graphql';

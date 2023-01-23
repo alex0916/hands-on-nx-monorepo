@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
-import { fireEvent, GqlMock, render, screen } from '@posts-app/test-utils';
-import { commentsFixture, postsFixture } from '@posts-app/fixtures';
+import { fireEvent, GqlMock, render, screen } from 'apps/posts-app/src/test/test-utils';
+import { commentsFixture, postsFixture } from 'apps/posts-app/src/test/fixtures';
 import { GetCommentsByPostIdDocument, GetPostsDocument } from 'apps/posts-app/src/generated/graphql';
 import { Posts } from '../Posts';
 

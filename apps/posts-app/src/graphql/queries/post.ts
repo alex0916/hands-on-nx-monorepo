@@ -1,5 +1,5 @@
 import { extendType } from 'nexus';
-import { ConnectionResponse } from '../../lib/ConnectionResponse';
+import { ConnectionResponse } from '../lib/ConnectionResponse';
 import { Post } from '../types';
 
 export const PostQueries = extendType({

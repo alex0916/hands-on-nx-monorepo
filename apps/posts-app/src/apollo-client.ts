@@ -30,7 +30,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> = null;
 
 const createApolloClient = (ctx?: GetServerSidePropsContext) => {
 	const httpLink = new HttpLink({
-		uri: process.env.API_URL,
+		uri: '/api/graphql',
 		credentials: 'same-origin',
 	});
 

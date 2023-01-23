@@ -15,9 +15,7 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@nx-monorepo/ui-components": ["libs/ui-components/src/index.ts"],
-			"@posts-app/fixtures": ["apps/posts-app/src/test/fixtures/index.ts"],
-			"@posts-app/test-utils": ["apps/posts-app/src/test/test-utils.tsx"]
+			"@nx-monorepo/ui-components": ["libs/ui-components/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

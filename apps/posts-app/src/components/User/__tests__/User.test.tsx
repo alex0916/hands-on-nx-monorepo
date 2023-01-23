@@ -1,6 +1,6 @@
 import { GraphQLError } from 'graphql';
-import { fireEvent, GqlMock, render, screen } from '@posts-app/test-utils';
-import { userFixture } from '@posts-app/fixtures';
+import { fireEvent, GqlMock, render, screen } from 'apps/posts-app/src/test/test-utils';
+import { userFixture } from 'apps/posts-app/src/test/fixtures';
 import { GetUserByIdDocument } from 'apps/posts-app/src/generated/graphql';
 import { User } from '../User';
 

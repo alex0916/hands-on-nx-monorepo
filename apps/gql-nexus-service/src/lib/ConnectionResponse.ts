@@ -41,6 +41,9 @@ export class ConnectionResponse<T> {
 	private getForwardPage() {
 		const { after, first } = this.args;
 		const afterCursorIndex = this.data.findIndex(({ id }) => String(id) === after);
+		if (afterCursorIndex === -1 && after) {
+			throw new GraphQLError('Cursor not found', { extensions: { code: ApolloServerErrorCode.BAD_USER_INPUT } });
+		}
 		// Check if the after cursor index is valid, if not, then return the first items.
 		const sliceAfterIndex = afterCursorIndex === -1 ? 0 : afterCursorIndex + 1;
 		return [...this.data.slice(sliceAfterIndex, first + sliceAfterIndex)];
@@ -70,7 +73,7 @@ export class ConnectionResponse<T> {
 		let hasPreviousPage = false;
 
 		if (this.data.length > 0) {
-			hasNextPage = endCursor !== this.data[this.data.length - 1].id;
+			hasNextPage = ![this.data[this.data.length - 1].id, null].includes(endCursor);
 			hasPreviousPage = startCursor !== this.data[0].id;
 		}
 

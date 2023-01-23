@@ -7,9 +7,9 @@ export const Home = () => {
 			<div>
 				<p className="font-bold antialiased text-4xl">A place to explore the magic of posts and comments.</p>
 				<Link href={'/users'}>
-					<Button size="large" className="my-6">
-						Get started
-					</Button>
+						<Button size="large" className="my-6">
+							Get started
+						</Button>
 				</Link>
 			</div>
 			<WelcomeIcon />

@@ -15,12 +15,12 @@ export const spinnerColorClasses: Record<SpinnerColor, string> = {
 export interface SpinnerProps {
 	size?: SpinnerSize;
 	color?: SpinnerColor;
-	testId?: string;
+	dataTestId?: string;
 }
 
-export const Spinner = ({ size = 'small', color = 'teal', testId }: SpinnerProps) => (
+export const Spinner = ({ size = 'small', color = 'teal', dataTestId }: SpinnerProps) => (
 	<div
-		data-testid={testId}
+		data-testid={dataTestId}
 		className={`border-t-gray-300 border-solid animate-spin rounded-full border-4 ${spinnerColorClasses[color]} ${spinnerSizeClasses[size]}`}
 	></div>
 );

@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User queries userById should resolve a user with posts 1`] = `
+Object {
+  "userById": Object {
+    "address": Object {
+      "city": "Gwenborough",
+    },
+    "avatar": "https://api.dicebear.com/5.x/avataaars/svg?seed=test1",
+    "company": Object {
+      "name": "Romaguera-Crona",
+    },
+    "email": "Sincere@april.biz",
+    "id": "test1",
+    "name": "Leanne Test",
+    "posts": Object {
+      "edges": Array [
+        Object {
+          "cursor": "post1",
+          "node": Object {
+            "body": "quia et suscipit
+suscipit recusandae consequuntur expedita et cum
+reprehenderit molestiae ut ut quas totam
+nostrum rerum est autem sunt rem eveniet architecto",
+            "id": "post1",
+            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "totalComments": 1,
+          },
+        },
+      ],
+      "pageInfo": Object {
+        "endCursor": "post1",
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": "post1",
+      },
+    },
+    "username": "@Bret",
+  },
+}
+`;
+
+exports[`User queries users should resolve next page 1`] = `
+Object {
+  "users": Object {
+    "edges": Array [
+      Object {
+        "cursor": "test2",
+        "node": Object {
+          "address": Object {
+            "city": "Wisokyburgh",
+            "street": "Victor Plains",
+            "suite": "Suite 879",
+            "zipcode": "90566-7771",
+          },
+          "avatar": "https://api.dicebear.com/5.x/avataaars/svg?seed=test2",
+          "company": Object {
+            "bs": "synergize scalable supply-chains",
+            "catchPhrase": "Proactive didactic contingency",
+            "name": "Deckow-Crist",
+          },
+          "email": "Shanna@melissa.tv",
+          "id": "test2",
+          "name": "Ervin Test",
+          "stats": Object {
+            "totalComments": 2,
+            "totalPosts": 2,
+          },
+          "username": "@Antonette",
+        },
+      },
+    ],
+    "pageInfo": Object {
+      "endCursor": "test2",
+      "hasNextPage": false,
+      "hasPreviousPage": true,
+      "startCursor": "test2",
+    },
+  },
+}
+`;
+
+exports[`User queries users should resolve no more results 1`] = `
+Object {
+  "users": Object {
+    "edges": Array [],
+    "pageInfo": Object {
+      "endCursor": null,
+      "hasNextPage": false,
+      "hasPreviousPage": true,
+      "startCursor": null,
+    },
+  },
+}
+`;
+
+exports[`User queries users should resolve the users 1`] = `
+Object {
+  "users": Object {
+    "edges": Array [
+      Object {
+        "cursor": "test1",
+        "node": Object {
+          "address": Object {
+            "city": "Gwenborough",
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "zipcode": "92998-3874",
+          },
+          "avatar": "https://api.dicebear.com/5.x/avataaars/svg?seed=test1",
+          "company": Object {
+            "bs": "harness real-time e-markets",
+            "catchPhrase": "Multi-layered client-server neural-net",
+            "name": "Romaguera-Crona",
+          },
+          "email": "Sincere@april.biz",
+          "id": "test1",
+          "name": "Leanne Test",
+          "stats": Object {
+            "totalComments": 2,
+            "totalPosts": 2,
+          },
+          "username": "@Bret",
+        },
+      },
+    ],
+    "pageInfo": Object {
+      "endCursor": "test1",
+      "hasNextPage": true,
+      "hasPreviousPage": false,
+      "startCursor": "test1",
+    },
+  },
+}
+`;
+
+exports[`User queries users should throw with unknown cursor 1`] = `
+Array [
+  Object {
+    "extensions": Object {
+      "code": "BAD_USER_INPUT",
+    },
+    "locations": Array [
+      Object {
+        "column": 3,
+        "line": 2,
+      },
+    ],
+    "message": "Cursor not found",
+    "path": Array [
+      "users",
+    ],
+  },
+]
+`;

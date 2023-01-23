@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments queries should resolve the comments 1`] = `
+Object {
+  "commentsByPostId": Object {
+    "edges": Array [
+      Object {
+        "cursor": "comment1",
+        "node": Object {
+          "id": "comment1",
+          "name": "id labore ex et quam laborum",
+        },
+      },
+    ],
+    "pageInfo": Object {
+      "endCursor": "comment1",
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "startCursor": "comment1",
+    },
+  },
+}
+`;

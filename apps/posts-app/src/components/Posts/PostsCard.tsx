@@ -1,7 +1,7 @@
 import { Card } from '@nx-monorepo/ui-components';
 import { Post } from '../../generated/graphql';
 
-export const PostCard = ({ title, body, totalComments, user, onPostClick }: Post & { onPostClick: () => void }) => (
+export const PostsCard = ({ title, body, totalComments, user, onPostClick }: Post & { onPostClick: () => void }) => (
 	<Card className="flex flex-col h-full bg-gray-200 dark:bg-slate-900 cursor-pointer" onClick={onPostClick}>
 		<div className="flex flex-wrap flex-row items-center">
 			<img

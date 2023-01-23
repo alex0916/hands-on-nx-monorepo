@@ -5,13 +5,6 @@ import { Comment } from '../types';
 export const CommentsQueries = extendType({
 	type: 'Query',
 	definition(t) {
-		t.connectionField('comments', {
-			type: Comment,
-			resolve: async (_, args, { dataSources }) => {
-				const comments = await dataSources.commentService.getComments();
-				return ConnectionResponse.fromResolver(args, comments).getResponse();
-			},
-		});
 		t.connectionField('commentsByPostId', {
 			type: Comment,
 			additionalArgs: {

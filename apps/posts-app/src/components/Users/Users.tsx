@@ -3,9 +3,9 @@ import { useGetUsersQuery } from '../../generated/graphql';
 import { UsersCard } from './UsersCard';
 import { Error } from '..';
 
-export const Users = () => {
+export const Users = ({ pageSize }: { pageSize: number }) => {
 	const { loading, data, error, fetchMore } = useGetUsersQuery({
-		variables: { first: 6 },
+		variables: { first: pageSize },
 		notifyOnNetworkStatusChange: true,
 	});
 
@@ -15,23 +15,24 @@ export const Users = () => {
 	};
 
 	const fetchMoreUsers = () => {
-		fetchMore({ variables: { first: 6, after: pageInfo.endCursor } });
+		fetchMore({ variables: { first: pageSize, after: pageInfo.endCursor } });
 	};
 
 	return (
 		<>
-			<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">Users</p>
 			{error ? <Error message={error.message} /> : null}
 			{users.length > 0 && (
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+				<ul data-testid="users" className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 					{users.map(({ node }) => (
-						<UsersCard key={node.id} {...node} />
+						<li key={node.id}>
+							<UsersCard {...node} />
+						</li>
 					))}
-				</div>
+				</ul>
 			)}
 			{loading && (
 				<div className="flex justify-center items-center my-4">
-					<Spinner size="medium" />
+					<Spinner dataTestId="users-spinner" size="medium" />
 				</div>
 			)}
 			{pageInfo.hasNextPage && (

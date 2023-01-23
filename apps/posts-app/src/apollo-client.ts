@@ -55,6 +55,7 @@ const createApolloClient = (ctx?: GetServerSidePropsContext) => {
 					fields: {
 						posts: relayStylePagination(),
 						users: relayStylePagination(),
+						commentsByPostId: relayStylePagination(),
 					},
 				},
 				User: {

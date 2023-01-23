@@ -3,7 +3,7 @@ import { ApolloError } from '@apollo/client';
 import { Spinner, Button } from '@nx-monorepo/ui-components';
 import { PageInfo, Post, PostEdge, User } from '../../generated/graphql';
 import { useModal } from '../../hooks';
-import { Error, PostCard, PostModal } from '..';
+import { Error, PostsCard, PostModal } from '..';
 
 interface PostsSectionProps {
 	loading: boolean;
@@ -32,19 +32,20 @@ export const PostsSection = ({
 
 	return (
 		<>
-			<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">Posts</p>
 			<PostModal isDisplayed={isDisplayed} hideModal={hideModal} post={selectedPost} />
 			{error ? <Error message={error.message} /> : null}
 			{posts.length > 0 && (
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-gray-600 dark:text-white">
+				<ul data-testid="posts" className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-gray-600 dark:text-white">
 					{posts.map(({ node }) => (
-						<PostCard key={node.id} onPostClick={() => handlePostClick(node)} user={user} {...node} />
+						<li key={node.id}>
+							<PostsCard onPostClick={() => handlePostClick(node)} user={user} {...node} />
+						</li>
 					))}
-				</div>
+				</ul>
 			)}
 			{loading && (
 				<div className="flex justify-center items-center my-4">
-					<Spinner size="medium" />
+					<Spinner dataTestId='posts-spinner' size="medium" />
 				</div>
 			)}
 			{pageInfo.hasNextPage && (

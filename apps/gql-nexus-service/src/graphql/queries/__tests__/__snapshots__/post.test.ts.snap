@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts queries should resolve the posts 1`] = `
+Object {
+  "posts": Object {
+    "edges": Array [
+      Object {
+        "cursor": "post1",
+        "node": Object {
+          "body": "quia et suscipit
+suscipit recusandae consequuntur expedita et cum
+reprehenderit molestiae ut ut quas totam
+nostrum rerum est autem sunt rem eveniet architecto",
+          "id": "post1",
+          "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+          "totalComments": 1,
+          "user": Object {
+            "avatar": "https://api.dicebear.com/5.x/avataaars/svg?seed=test1",
+            "email": "Sincere@april.biz",
+            "id": "test1",
+            "name": "Leanne Test",
+          },
+        },
+      },
+      Object {
+        "cursor": "post2",
+        "node": Object {
+          "body": "est rerum tempore vitae
+sequi sint nihil reprehenderit dolor beatae ea dolores neque
+fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis
+qui aperiam non debitis possimus qui neque nisi nulla",
+          "id": "post2",
+          "title": "qui est esse",
+          "totalComments": 1,
+          "user": Object {
+            "avatar": "https://api.dicebear.com/5.x/avataaars/svg?seed=test1",
+            "email": "Sincere@april.biz",
+            "id": "test1",
+            "name": "Leanne Test",
+          },
+        },
+      },
+    ],
+    "pageInfo": Object {
+      "endCursor": "post2",
+      "hasNextPage": true,
+      "hasPreviousPage": false,
+      "startCursor": "post1",
+    },
+  },
+}
+`;

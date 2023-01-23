@@ -34,7 +34,7 @@ export const PostModal = ({ post, isDisplayed, hideModal }: PostModalProps) => {
 			<div className="flex flex-col mt-auto border border-transparent border-t-slate-500 mb-4">
 				<p className="self-end text-xs pt-2">{totalComments} comments</p>
 			</div>
-			{id ? <Comments postId={id} /> : null}
+			{id ? <Comments pageSize={5} postId={id} /> : null}
 		</Modal>
 	);
 };

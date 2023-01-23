@@ -5,7 +5,7 @@ export default function UserPage() {
 	const { query } = useRouter();
 
 	return (
-		<Page header="Posts">
+		<Page>
 			<User userId={String(query.id)} postsPageSize={3} />
 		</Page>
 	);

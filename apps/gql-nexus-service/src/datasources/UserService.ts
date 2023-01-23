@@ -1,16 +1,14 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import { NexusGenObjects } from '../generated/nexus-typegen';
-
-type User = NexusGenObjects['User'];
+import { UserModel } from '../models';
 
 export class UserService extends RESTDataSource {
 	override baseURL = 'https://jsonplaceholder.typicode.com';
 
-	getUsers(): Promise<User[]> {
+	getUsers(): Promise<UserModel[]> {
 		return this.get('/users');
 	}
 
-	getUserById(userId: string): Promise<User> {
+	getUserById(userId: string): Promise<UserModel> {
 		return this.get(`/users/${userId}`);
 	}
 }

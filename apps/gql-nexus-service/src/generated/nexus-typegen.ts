@@ -166,7 +166,6 @@ export interface NexusGenFieldTypes {
     post: NexusGenRootTypes['Post']; // Post!
   }
   Query: { // field return type
-    comments: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     commentsByPostId: NexusGenRootTypes['CommentConnection'] | null; // CommentConnection
     posts: NexusGenRootTypes['PostConnection'] | null; // PostConnection
     userById: NexusGenRootTypes['User'] | null; // User
@@ -256,7 +255,6 @@ export interface NexusGenFieldTypeNames {
     post: 'Post'
   }
   Query: { // field return type name
-    comments: 'CommentConnection'
     commentsByPostId: 'CommentConnection'
     posts: 'PostConnection'
     userById: 'User'
@@ -294,12 +292,6 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Query: {
-    comments: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-    }
     commentsByPostId: { // args
       after?: string | null; // String
       before?: string | null; // String

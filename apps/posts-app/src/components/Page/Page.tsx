@@ -33,10 +33,12 @@ export const Page = ({ children, header }: PageProps) => (
 			]}
 		/>
 		<div className="grid grid-cols-12 text-white mb-8">
-			{header ? (
-				<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">{header}</p>
-			) : null}
-			<div className="col-start-2 col-end-12 md:col-start-3 md:col-end-11">{children}</div>
+			<div className="col-start-2 col-end-12 md:col-start-3 md:col-end-11">
+				{header ? (
+					<p className="font-bold antialiased text-3xl mb-6 text-gray-600 dark:text-white">{header}</p>
+				) : null}
+				{children}
+			</div>
 		</div>
 	</div>
 );

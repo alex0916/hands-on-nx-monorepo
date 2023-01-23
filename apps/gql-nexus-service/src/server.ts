@@ -1,12 +1,12 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
-import { context } from './context';
+import { Context, context } from './context';
 import { schema } from './schema';
 
 async function startServer() {
 	try {
-		const server = new ApolloServer({ schema });
+		const server = new ApolloServer<Context>({ schema });
 
 		const { url } = await startStandaloneServer(server, {
 			context: async () => Promise.resolve(context),

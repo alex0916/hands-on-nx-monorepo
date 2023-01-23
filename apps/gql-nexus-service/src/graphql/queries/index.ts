@@ -1,3 +1,3 @@
-export * from './Comment';
-export * from './Post';
-export * from './User';
+export * from './comment';
+export * from './post';
+export * from './user';

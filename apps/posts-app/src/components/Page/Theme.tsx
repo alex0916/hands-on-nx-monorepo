@@ -5,7 +5,11 @@ export const Theme = () => {
 	const { theme, setTheme } = useThemeContext();
 
 	return (
-		<button className="flex items-center" onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}>
+		<button
+			className="flex items-center"
+			onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}
+			role="button"
+		>
 			{theme === 'dark' ? (
 				<LightModeIcon className="text-yellow-300 h-6 w-6" />
 			) : (

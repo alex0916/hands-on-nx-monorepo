@@ -9,7 +9,8 @@
 		"build": "nx build",
 		"test": "nx test",
 		"test:all": "nx run-many --target=test --all=true",
-		"test:affected": "nx affected --target=test --base=main --head=HEAD",
+		"test:affected": "nx affected --target=test",
+		"lint:affected": "nx affected --target=lint",
 		"e2e:affected": "nx affected --target=e2e",
 		"generate": "graphql-codegen --config codegen.ts"
 	},

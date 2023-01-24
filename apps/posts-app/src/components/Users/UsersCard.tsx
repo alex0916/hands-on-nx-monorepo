@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Card } from '@nx-monorepo/ui-components';
 import { User } from '../../generated/graphql';
@@ -13,10 +14,12 @@ export const UsersCard = ({ id, avatar, name, stats: { totalComments, totalPosts
 	<Link href={`users/${id}`}>
 			<Card className="bg-gray-200 dark:bg-slate-900 text-gray-600 dark:text-white">
 				<div className="flex flex-wrap flex-col items-center">
-					<img
+					<Image
 						className="w-16 h-16 p-1 rounded-full ring-2 ring-slate-300 dark:ring-slate-500"
 						src={avatar}
 						alt="avatar"
+						width={50}
+						height={50}
 					/>
 					<p className="font-bold text-lg text-center pt-2">{name}</p>
 					<div className="flex flex-row space-x-4 text-center pt-2">

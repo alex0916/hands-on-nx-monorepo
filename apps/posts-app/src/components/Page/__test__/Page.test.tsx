@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from 'apps/posts-app/src/test/test-utils';
+import { fireEvent, render, screen } from '@app/test-utils';
 import { Page, Home, PageProps } from '../..';
 
 const subject = (props?: PageProps) =>

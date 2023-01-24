@@ -5,7 +5,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeContextProvider } from '../contexts';
 
-export type GqlMock = MockedResponse<Record<string, any>>;
+export type GqlMock = MockedResponse<Record<string, unknown>>;
 
 const cache = new InMemoryCache({
 	typePolicies: {

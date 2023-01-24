@@ -1,7 +1,7 @@
 import { GraphQLError } from 'graphql';
-import { fireEvent, GqlMock, render, screen } from 'apps/posts-app/src/test/test-utils';
-import { commentsFixture, postsFixture } from 'apps/posts-app/src/test/fixtures';
-import { GetCommentsByPostIdDocument, GetPostsDocument } from 'apps/posts-app/src/generated/graphql';
+import { fireEvent, GqlMock, render, screen } from '@app/test-utils';
+import { commentsFixture, postsFixture } from '@app/test-fixtures';
+import { GetCommentsByPostIdDocument, GetPostsDocument } from '@app/generated';
 import { Posts } from '../Posts';
 
 const PAGE_SIZE = 1;

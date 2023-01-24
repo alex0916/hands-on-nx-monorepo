@@ -1,6 +1,6 @@
-import { getTestServer } from 'apps/posts-app/src/graphql/test/server';
-import { COMMENTS_BY_POST_ID } from 'apps/posts-app/src/graphql/test/operations';
-import { postsFixture, commentsFixture } from 'apps/posts-app/src/graphql/test/fixtures';
+import { getTestServer } from '@gql/test-server';
+import { COMMENTS_BY_POST_ID } from '@gql/test-operations';
+import { postsFixture, commentsFixture } from '@gql/test-fixtures';
 
 const { mockContext, executeOperation } = getTestServer();
 

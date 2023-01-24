@@ -12,6 +12,17 @@ const nextConfig = {
 		// See: https://github.com/gregberge/svgr
 		svgr: false,
 	},
+	images: {
+		dangerouslyAllowSVG: true,
+		remotePatterns: [
+		  {
+			protocol: 'https',
+			hostname: 'api.dicebear.com',
+			port: '',
+			pathname: '/5.x/**',
+		  },
+		],
+	  },
 };
 
 module.exports = withNx(nextConfig);

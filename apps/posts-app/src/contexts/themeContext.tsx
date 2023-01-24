@@ -1,8 +1,6 @@
 import {
 	createContext,
-	Dispatch,
 	PropsWithChildren,
-	SetStateAction,
 	useContext,
 	useEffect,
 	useMemo,
@@ -23,14 +21,6 @@ const ThemeContext = createContext<ThemeContextState>({} as ThemeContextState);
 export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 	const [theme, setTheme] = useState<Theme>('dark');
 
-	const setDarkTheme = () => {
-		setTheme('dark');
-	};
-
-	const setLightTheme = () => {
-		setTheme('light');
-	};
-
 	useEffect(() => {
 		const root = window.document.documentElement;
 		root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -40,10 +30,10 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 	const contextValue = useMemo(
 		() => ({
 			theme,
-			setDarkTheme,
-			setLightTheme,
+			setDarkTheme: () => setTheme('dark'),
+			setLightTheme: () => setTheme('light'),
 		}),
-		[theme, setTheme]
+		[theme]
 	);
 
 	return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;

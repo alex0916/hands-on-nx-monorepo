@@ -1,7 +1,7 @@
 import { DocumentNode } from 'graphql';
-import { getTestServer } from 'apps/posts-app/src/graphql/test/server';
-import { USERS, USER_BY_ID } from 'apps/posts-app/src/graphql/test/operations';
-import { usersFixture, postsFixture, commentsFixture } from 'apps/posts-app/src/graphql/test/fixtures';
+import { getTestServer } from '@gql/test-server';
+import { USERS, USER_BY_ID } from '@gql/test-operations';
+import { usersFixture, postsFixture, commentsFixture } from '@gql/test-fixtures';
 
 const { mockContext, executeOperation } = getTestServer();
 let query: DocumentNode;

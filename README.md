@@ -1,6 +1,7 @@
 # Hands on Nx monorepo :hand:
 
 Explore [Nx](https://nx.dev/) with GraphQL Nexus, Next.js, Tailwind CSS, Storybook and Cypress.
+
 Bonus: It also has [github actions](./.github/workflows/ci.yml) and [git hooks](./.husky/pre-commit) configured.
 
 [DEMO](https://posts-app-seven.vercel.app/) available thanks to the [Vercel](https://vercel.com) hobby plan :heart:
@@ -40,7 +41,7 @@ Starts Storybook
 
 Runs the tests
 
-## Graphql Service
+## GraphQL Service
 
 The service uses:
 

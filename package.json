@@ -10,6 +10,7 @@
 		"test": "nx test",
 		"test:all": "nx run-many --target=test --all=true",
 		"test:affected": "nx affected --target=test",
+		"test:affected:main": "nx affected --target=test --base=remotes/origin/main",
 		"e2e:affected": "nx affected --target=e2e",
 		"generate": "graphql-codegen --config codegen.ts"
 	},

@@ -6,6 +6,13 @@ Bonus: It also has [github actions](./.github/workflows/ci.yml) and [git hooks](
 
 [DEMO](https://posts-app-seven.vercel.app/) available thanks to the [Vercel](https://vercel.com) hobby plan :heart:
 
+# Table of Contents
+
+1. [Get started](#get-started)
+2. [UI](#ui)
+3. [GraphQL Service](#graphql-service)
+4. [Cypress e2e](#cypress-e2e)
+
 ## Get started
 
 Clone this repo and run `npm install && npm start posts-app`.
@@ -69,7 +76,7 @@ E.g.
 - Start the app.
 - Visit `api/graphql`
 
-### Cypress e2e
+## Cypress e2e
 
 The are a few e2e tests using [Cypress](https://www.cypress.io/)
 

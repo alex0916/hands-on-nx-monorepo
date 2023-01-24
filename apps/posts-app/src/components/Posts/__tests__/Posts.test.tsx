@@ -66,7 +66,6 @@ describe('Posts', () => {
 	});
 
 	it('should extend the selected post', async () => {
-		// Add the comments call
 		mocks.push({
 			request: {
 				query: GetCommentsByPostIdDocument,

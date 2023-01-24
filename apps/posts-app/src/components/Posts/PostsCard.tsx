@@ -1,13 +1,16 @@
+import Image from 'next/image';
 import { Card } from '@nx-monorepo/ui-components';
 import { Post } from '../../generated/graphql';
 
 export const PostsCard = ({ title, body, totalComments, user, onPostClick }: Post & { onPostClick: () => void }) => (
 	<Card className="flex flex-col h-full bg-gray-200 dark:bg-slate-900 cursor-pointer" onClick={onPostClick}>
 		<div className="flex flex-wrap flex-row items-center">
-			<img
+			<Image
 				className="w-10 h-10 p-1 rounded-full ring-2 ring-slate-300 dark:ring-slate-500"
 				src={user.avatar}
 				alt="avatar"
+				width={50}
+				height={50}
 			/>
 			<div className="flex flex-wrap flex-col items-start ml-4">
 				<p className="font-semibold text-sm">{user.name}</p>

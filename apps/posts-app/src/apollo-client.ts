@@ -14,7 +14,7 @@ import { relayStylePagination } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
 
 interface PageProps {
-	props?: Record<string, any>;
+	props?: Record<string, unknown>;
 }
 
 export const APOLLO_STATE_PROPERTY_NAME = '__APOLLO_STATE__';

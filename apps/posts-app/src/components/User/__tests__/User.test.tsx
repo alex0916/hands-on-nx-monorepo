@@ -1,7 +1,7 @@
 import { GraphQLError } from 'graphql';
-import { fireEvent, GqlMock, render, screen } from 'apps/posts-app/src/test/test-utils';
-import { userFixture } from 'apps/posts-app/src/test/fixtures';
-import { GetUserByIdDocument } from 'apps/posts-app/src/generated/graphql';
+import { fireEvent, GqlMock, render, screen } from '@app/test-utils';
+import { userFixture } from '@app/test-fixtures';
+import { GetUserByIdDocument } from '@app/generated';
 import { User } from '../User';
 
 const PAGE_SIZE = 1;

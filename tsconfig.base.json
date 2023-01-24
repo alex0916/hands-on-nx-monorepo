@@ -1,22 +1,28 @@
 {
-	"compileOnSave": false,
-	"compilerOptions": {
-		"rootDir": ".",
-		"sourceMap": true,
-		"declaration": false,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"importHelpers": true,
-		"target": "es2015",
-		"module": "esnext",
-		"lib": ["es2017", "dom"],
-		"skipLibCheck": true,
-		"skipDefaultLibCheck": true,
-		"baseUrl": ".",
-		"paths": {
-			"@nx-monorepo/ui-components": ["libs/ui-components/src/index.ts"]
-		}
-	},
-	"exclude": ["node_modules", "tmp"]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nx-monorepo/ui-components": ["libs/ui-components/src/index.ts"],
+      "@gql/test-server": ["apps/posts-app/src/graphql/test/server.ts"],
+      "@gql/test-fixtures": ["apps/posts-app/src/graphql/test/fixtures/index.ts"],
+      "@gql/test-operations": ["apps/posts-app/src/graphql/test/operations/index.ts"],
+      "@app/test-utils": ["apps/posts-app/src/test/test-utils.tsx"],
+      "@app/test-fixtures": ["apps/posts-app/src/test/fixtures/index.ts"],
+      "@app/generated": ["apps/posts-app/src/generated/graphql.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
 }

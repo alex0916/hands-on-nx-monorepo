@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import Link from 'next/link';
 
 import { Navbar } from '@nx-monorepo/ui-components';
@@ -23,12 +23,15 @@ export const Page = ({ children, header }: PageProps) => (
 			className="shadow mb-10"
 			logo={<Logo />}
 			options={[
+				// eslint-disable-next-line
 				<Link href={'/users'} className="text-gray-600 dark:text-white">
 					Users
 				</Link>,
+				// eslint-disable-next-line
 				<Link href={'/posts'} className="text-gray-600 dark:text-white">
 					Posts
 				</Link>,
+				// eslint-disable-next-line
 				<Theme />,
 			]}
 		/>

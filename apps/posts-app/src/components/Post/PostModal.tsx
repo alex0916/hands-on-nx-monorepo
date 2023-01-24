@@ -14,7 +14,11 @@ export const PostModal = ({ post, isDisplayed, hideModal }: PostModalProps) => {
 	const { id, user, title, body, totalComments } = post ?? {};
 
 	return (
-		<Modal isDisplayed={isDisplayed} hideModal={hideModal} className="text-gray-600 dark:text-white bg-gray-200 dark:bg-slate-900">
+		<Modal
+			isDisplayed={isDisplayed}
+			hideModal={hideModal}
+			className="text-gray-600 dark:text-white bg-gray-200 dark:bg-slate-900"
+		>
 			{user ? (
 				<div className="flex flex-wrap flex-row items-center">
 					<Image

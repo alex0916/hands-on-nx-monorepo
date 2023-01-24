@@ -1,6 +1,19 @@
 {
-  "singleQuote": true,
-  "useTabs": true,
-  "tabWidth": 4,
-  "printWidth": 120
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js"],
+      "options": {
+        "useTabs": true,
+        "tabWidth": 4,
+        "singleQuote": true
+      }
+    },
+    {
+      "files": ["*.json", "*.yml"],
+      "options": {
+        "useTabs": false
+      }
+    }
+  ]
 }

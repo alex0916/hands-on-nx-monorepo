@@ -2,10 +2,10 @@ import { DarkModeIcon, LightModeIcon } from '@nx-monorepo/ui-components';
 import { useThemeContext } from '../../contexts';
 
 export const Theme = () => {
-	const { theme, setTheme } = useThemeContext();
+	const { theme, setDarkTheme, setLightTheme } = useThemeContext();
 
 	return (
-		<button className="flex items-center" onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}>
+		<button className="flex items-center" onClick={theme === 'dark' ? setLightTheme : setDarkTheme} role="button">
 			{theme === 'dark' ? (
 				<LightModeIcon className="text-yellow-300 h-6 w-6" />
 			) : (

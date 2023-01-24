@@ -13,7 +13,8 @@ type Theme = 'dark' | 'light';
 
 interface ThemeContextState {
 	theme: Theme;
-	setTheme: Dispatch<SetStateAction<Theme>>;
+	setDarkTheme: () => void;
+	setLightTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextState>({} as ThemeContextState);
@@ -21,6 +22,14 @@ const ThemeContext = createContext<ThemeContextState>({} as ThemeContextState);
 // @TODO support system preference and manual selection
 export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 	const [theme, setTheme] = useState<Theme>('dark');
+
+	const setDarkTheme = () => {
+		setTheme('dark');
+	};
+
+	const setLightTheme = () => {
+		setTheme('light');
+	};
 
 	useEffect(() => {
 		const root = window.document.documentElement;
@@ -31,7 +40,8 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 	const contextValue = useMemo(
 		() => ({
 			theme,
-			setTheme,
+			setDarkTheme,
+			setLightTheme,
 		}),
 		[theme, setTheme]
 	);

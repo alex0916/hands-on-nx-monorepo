@@ -13,7 +13,7 @@ export function Navbar({ logo, options, className }: NavbarProps) {
 	return (
 		<nav className={`w-full ${className}`}>
 			<div className="grid grid-cols-12">
-				<div className="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				<div className="col-start-2 col-end-12 md:col-start-3 md:col-end-5">
 					<div className="flex items-center justify-between py-3 md:py-5 md:block">
 						{logo}
 						<div className="md:hidden">
